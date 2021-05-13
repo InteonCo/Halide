@@ -434,7 +434,12 @@ public:
             Expr r1 = true_runtime(n) * scale;
 
             // Invert them to get relative throughput, and compute L2 loss.
-            Expr delta = pow(1.0f / max(p1, 1e-10f) - 1.0f / r1, 2);
+            // Expr delta = pow(1.0f / max(p1, 1e-10f) - 1.0f / r1, 2);
+            // Instead of the term above, we will divide the delta by the 1/r1,
+            // emphasizing that getting smaller runtime predictions wrong would
+            // contribute more to the error term than getting larger predictions wrong.
+            // We will experiment with adding powers and coefficients to r1.
+            Expr delta = pow(1.0f / max(p1, 1e-10f) - 1.0f / r1, 2) / r1;
 
             // Add the regulization with a small weight.
             err(n) = delta + 1e-5f * regularize;

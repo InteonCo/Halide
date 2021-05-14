@@ -83,12 +83,15 @@ class FlattenRamps : public IRMutator {
             if ((int)const_indices.size() == lanes) {
 
                 // Compute the stride for the underlying strided load
-                int stride = 1;
+                // DLS: setting stride=1 here appears to cause a failure in IR.cpp
+                int stride = 0;
                 for (int c : const_indices) {
                     stride = (int)gcd(stride, c);
                 }
                 for (int &c : const_indices) {
-                    c /= stride;
+                    if (stride != 0) {
+                        c /= stride;
+                    }
                 }
 
                 // Compute the number of elements loaded

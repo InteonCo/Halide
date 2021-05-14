@@ -89,9 +89,9 @@ class FlattenRamps : public IRMutator {
                     stride = (int)gcd(stride, c);
                 }
                 for (int &c : const_indices) {
-                    if (stride != 0) {
+                //    if (stride != 0) {
                         c /= stride;
-                    }
+                //    }
                 }
 
                 // Compute the number of elements loaded

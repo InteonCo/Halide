@@ -83,7 +83,7 @@ class FlattenRamps : public IRMutator {
             if ((int)const_indices.size() == lanes) {
 
                 // Compute the stride for the underlying strided load
-                int stride = 0;
+                int stride = 1;
                 for (int c : const_indices) {
                     stride = (int)gcd(stride, c);
                 }

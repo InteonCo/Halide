@@ -1712,7 +1712,7 @@ void LoopNest::apply(LoopLevel here,
                     internal_assert(v.innermost_pure_dim && v.exists) << v.var.name() << "\n";
                     // Is the result of a split
                     state.schedule_source
-                        << "\n    .vectorize(" << v.var.name() << ")";
+                        << "\n    .vectorize(" << conform_name(v.var.name()) << ")";
                     state.python_schedule_source
                         << " \\\n    .vectorize(" << conform_name(v.var.name()) << ")";
                     s.vectorize(v.var);
@@ -1784,8 +1784,8 @@ void LoopNest::apply(LoopLevel here,
                         s.split(parent.var, parent.var, inner, (int)factor, tail_strategy);
                         state.schedule_source
                             << "\n    .split("
-                            << parent.var.name() << ", "
-                            << parent.var.name() << ", "
+                            << conform_name(parent.var.name()) << ", "
+                            << conform_name(parent.var.name()) << ", "
                             << inner.name() << ", "
                             << factor << ", "
                             << "TailStrategy::" << tail_strategy << ")";

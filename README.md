@@ -1,5 +1,7 @@
 # Halide
 
+This is a branch used to illustrate the build for Halide from scaffold.
+
 Halide is a programming language designed to make it easier to write
 high-performance image and array processing code on modern machines. Halide
 currently targets:

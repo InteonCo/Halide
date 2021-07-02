@@ -1767,9 +1767,9 @@ void LoopNest::apply(LoopLevel here,
                         parent.exists = false;
                         parent.extent = 1;
                     } else {
-                        VarOrRVar inner(Var(parent.var.name() + "i"));
+                        VarOrRVar inner(Var(conform_name(parent.var.name() + "i")));
                         if (parent.var.is_rvar) {
-                            inner = RVar(parent.var.name() + "i");
+                            inner = RVar(conform_name(parent.var.name() + "i", "r"));
                         }
 
                         auto tail_strategy = pure_var_tail_strategy;
@@ -1874,7 +1874,7 @@ void LoopNest::apply(LoopLevel here,
         if (here.is_root()) {
             loop_level = "_root()";
         } else {
-            loop_level = "_at(" + here.func() + ", " + here.var().name() + ")";
+            loop_level = "_at(" + conform_name(here.func()) + ", " + conform_name(here.var().name()) + ")";
         }
         for (const auto &c : children) {
             if (c->node != node) {

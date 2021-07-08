@@ -424,7 +424,8 @@ int main(int argc, char **argv) {
         float v_correct_ordering_rate_sum[kModels] = {0};
         float v_correct_ordering_rate_count[kModels] = {0};
 
-        for (int e = 0; e < flags.epochs; e++) {
+        // for (int e = 0; e < flags.epochs; e++) {
+        for (int e = 0; e < 1; e++) {            
             int counter = 0;
 
             float worst_miss = 0;

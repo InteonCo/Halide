@@ -437,7 +437,8 @@ public:
             Expr delta = pow(1.0f / max(p1, 1e-10f) - 1.0f / r1, 2);
 
             // Add the regulization with a small weight.
-            err(n) = delta + 1e-5f * regularize;
+            // err(n) = delta + 1e-5f * regularize;
+            err(n) = delta + 0.0f * regularize;
 
             // Sum the errors over the batch.
             Expr loss = sum(err(r_batch));

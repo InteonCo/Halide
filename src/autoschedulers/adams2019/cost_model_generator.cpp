@@ -460,8 +460,8 @@ public:
             Expr delta = 17.0f*(exp(-0.22f*(0.25f*r1-p1)) + 0.22f*(0.25f*r1-p1) - 1.0f) + r1*r1; // 
 
             // Add the regulization with a small weight.
-            err(n) = delta + 1e-5f * regularize;
-            //err(n) = delta + 0.0f * regularize;
+            // err(n) = delta + 1e-5f * regularize;
+            err(n) = delta + 0.0f * regularize;
             //err(n) = delta;
 
             // Sum the errors over the batch.
